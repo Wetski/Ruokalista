@@ -1,0 +1,170 @@
+<html>
+	<head>
+	</head>
+	<style>
+	h2, h3 {
+		margin-bottom: 0;
+	}
+	p, ol, h3 {
+		margin-top: 0;
+	}
+	h2 {
+		margin-top: 50px;
+	}
+	img {
+	border: solid 1px black;
+	}
+	
+	</style>
+	<body>
+		<a href="../index.php">Etusivu</a>
+		<h1>Javascript ja php kurssien harjoitustyön dokumentaatio</h1>
+		<h3>Veeti Karttunen, Niki Liuhanen, Aaro Lyytinen</h3>
+		
+		
+		<h2>Sisältö</h2>
+		<ol>
+			<li>Johdanto</li>
+			<li>Suunnitelma</li>
+			<ol>
+				<li>Yleinen</li>
+				<li>Luonnos</li>		
+			</ol>
+			<li>Toteutus</li>
+            <ol>
+                <li>JSON</li>
+				<li>Ulkoasu</li>
+				<li>Käyttöliittymä</li>
+                <li>Tietokannat</li>
+                <li>Register & Login</li>
+                <li>Arvostelut</li>
+				<li>Kielet ja kirjastot</li>
+				<li>Lähdekoodi</li>
+                    
+            </ol>
+			<li>Työskentely</li>
+			<ol>	
+				<li>Yleinen</li>
+				<li>Veeti Karttunen</li>
+				<li>Nicolas Liuhanen</li>
+				<li>Aaro Lyytinen</li>
+				<li>Haasteet</li>
+			</ol>
+			<li>Itsearviointi</li>
+			<ol>
+				<li>Aaro</li>
+				<li>Niki</li>
+				<li>Veeti</li>
+			</ol>
+		</ol>
+		
+		<h2>1 Johdanto</h2>
+		<p>Työn aiheeksi valittiin verkkosivusto, joka hakee lounasravintoloiden ruokalistat ja esittää nämä ruokalistat yhdellä sivustolla.
+		Aihe valittiin, koska lounaspaikan valitseminen on helpompaa jos voi nopeasti ja helposti vertailla eri ravintoloiden ruokia.
+		Tämä sivusto on tehty niin sanotusti omaan käyttöön ja täten sen työstämiseen on löytynyt paljon motivaatiota.
+		Sivuston ominaisuuksiin kuuluu muun muassa autentikointi, ravintoloiden arviointi, eri ravintoloiden valitseminen omaan käyttöön</p>
+		
+		<h2>2 Suunnitelma</h2>
+		<h3>2.1 Yleinen</h3>
+		<p>Alkuperäinen suunnitelma oli tehdä ruokalistoja listaava sivu ja kehittää kyseistä ideaa pidemmälle. Suunnitelma vaiheessa harjoitustyöhön haluttiin rekisteröityminen / sisäänkirjautuminen tietokantojen kautta, käyttäjän
+		mahdollisuus valita suosikki ravintolat, ruokalistat koko viikolta ja avainsanoja joilla voi suodattaa suosikkiruokia.</p>
+		<h3>2.2 Luonnos</h3>
+		<p><img src="../img/synapsis.png"</p>
+		
+		<h2>3 Toteutus</h2>
+        
+        <h3>3.1 JSON</h3>
+        <p> Ensimmäinen haaste oli saada toimiva ratkaisu json-tiedostojen saamiseksi ja päivittämiseksi. 
+		Ensimmäinen versio, jolla toteutimme haun, oli yahoon API. Tämän osoittautuessa epävarmaksi, vaihdoimme yksinkertaiseen linuxilla toteutettuun bash scriptiin. 
+		Scripti haki lounaslistat ja tallennsi ne suoraan palvelimelle, hyödyntäen crontab- ja wget-komentoja. Tämä osoittautui helpoimmaksi ja kätevimmäksi tavaksi toteuttaa lounaslistojen lataaminen,
+		mutta ongelmana oli sivuston siirokyvyn rajoittuvuus eri palvelimille. Harjoitustyön kannalta paras ratkaisu saatiin luomalla php-lohjelma, joka hakee lounaslistat suoraan palvelimelle listojen vanhentuessa.</p>
+        
+        <h3>3.2 Ulkoasu</h3>
+        <p>Sivun ulkoasunmuotoilu oli aikavievää, koska väri- ja tyylisilmä vastaa sokeata kyklooppia, mutta suhteellisen yksinkertaista. Ulkoasussa käytetty bootstrap:iä ja css:ää.</p>
+		
+		<h3>3.3 Käyttöliittymä</h3>
+        <p>Käyttöliittymä ohjelmoitiin pääsäntöisesti JavaScriptillä. Etusivulle tulostetaan lounaslistat javascriptin avulla, sekä viikonpäivät-navigointipalkki. 
+		Ruokalistojen data haetaan palvelimelta käyttäen JQueryä ja ajaxia. Lähes jokaiselle sivulle on lisätty navigointipalkki, joka muotoillaan PHP:llä. PHP-ohjelma 
+		tarkistaa onko autentikointi tapahtunut ja muotoilee navbarin oikeanlaiseksi. Istunnon-hallintaa hyödynnetään myös harjoitustyössä, lähes joka sivulla.</p>
+     
+        <h3>3.4 Tietokannat</h3>   
+        <p>Tietokannat luotiin sisäänkirjautumista, käyttäjäasetuksia ja arvosteluita varten. Tietokantoihin luotiin kolme taulua, joista käyttäjän ja käyttäjä_asetusten 
+		välillä käytimme viiteavainta. Viite-avain hakee käyttäjä taulusta avaimen, jonka avulla määritetään mille käyttäjälle kyseinen asetus kuuluu.</p>
+        
+        <h3>3.5 Register & Login</h3>
+        <p>Rekisteröityminen sivuille tapahtuu kun käyttäjä syötää käyttäjätunnuksen ja salasanan rekisteröitymis-sivulla. Käyttäjänimen ja salasanan 
+		tulee molempien olla vähintään yhden merkin pituisia. Salasanoja saa olla useita samoja eri käyttäjillä, mutta käyttäjänimiä ei voi olla tietokannan 
+		käyttäjä taulussa kuin yksi (uniikki). Php-ohjelma tarkastaa tietokannasta ennen käyttäjätilin luomista onko käyttäjänimi jo olemassa. Salasanat häshätään 
+		ja suolataan pharlib-kirjastolla, joka opetettiin kurssin aikana.</p>
+
+        <p>Sisäänkirjautuminen tapahtuu tietokannan kautta, jossa tarkistetaan onko käyttäjätunnus ja salasana yhteensopivat. Sisäänkirjautunut käyttäjä voi 
+		muokata omaa profiiliaan. Omassa profiilissa käyttäjä voi valita suosikki ravintolansa, vaihtaa salasanan tai poistaa käyttäjätunnuksensa. Valitut suosikkiravintolat 
+		tulevat näkyviin etusivun ravintoloiksi. Tämä on hyödyllinen toiminto siinä vaiheessa kun ravintoloita alkaa olemaan satoja kappaleita, jolloin suosiikien 
+		seuraaminen olisi nopeampaa ja helpompaa.</p>
+        
+        <h3>3.6 Arvostelut</h3>
+        <p>Arvostelun tarkoitus on antaa ravintolalle tähtiä, kirjoitettu arvostelu, ja näyttämään annettujen tähtien keskiarvo. 
+        Arvostelu toimii vain kirjautuneille käyttäjille, arvostelut tallennetaan tietokannan arvostelut tauluun, josta voidaan tulostaa esimerkiksi kaikki kirjoitetut arvostelut ja tähdet.
+        Arvostelu ei käytä hyväksi erillistä sivua, vaan bootsrap:in collapsen avulla luotua funktiota. Tämä selkeyttää käyttöliittymää huomattavasti.</p>
+		
+		<h3>3.7 Kielet ja kirjastot</h3>
+		<p>Työn toteutuksessa käytettiin javascriptiä, jqueryä, jsonia, bootstrap, mysql sekä php:tä. </p>
+		
+		<h3>3.8 Lähdekoodi</h3>
+		<p><a href="https://github.com/Wetski/Javascript-ja-PHP-Harjoitustyo">Linkki githubiin</a></p>   
+    
+		<h2>4 Työskentely</h2> 
+		<h3>4.1 Yleinen</h3>
+		<p>Työhön käytettiin noin kuusikymmentä (60) työtuntia. Useat osiot työssä tehtiin yhdessä, erityisesti haastelliset ja ongelmalliset osa-alueet. Harjoitustyö opetti meille paljon 
+		ohjelmoinnista, resurssien hallinnasta(aikataulut mm.), tiedostorakenteista ja yhtenäisen kielen valinnasta. Kun harjoitustyö alkaa saavuttamaan tietyn mittasuhteen, alkaa yhden
+		asian muuttaminen olemaan haasteellista, varsinkin jos taulut, muuttujat, yms. on nimetty epäloogisesti tai epäyhtenäisesti. Suorastaan hilpeyttä aiheuttanut arvostelut taulun 
+		sisältämät alkiot ja niiden suomi/englanti sekoitukset, jotka saivat aikaan sekaannuksia ohjelmaa kehitettäessä. Ryhmätyö toimi erinomaisesti ja motivaatiosta ei ollut puutetta. 
+		Koko harjoitustyö tehtiin vapaa-ajalla, eikä se tuntunut pakotetulta.</p>
+				
+		<h3>4.2 Veeti Karttunen</h3>
+		<ul>
+		<li>Haastavat ohjelmointi osiot</li>
+		<li>Viikonpäiväpalkki</li>
+		<li>Käyttäjä-asetukset</li>
+		<li>Ruokalistojen parsiminen</li>
+		</ul>
+		
+		<h3>4.3 Nicolas Liuhanen</h3>
+		<ul>
+		<li>JSON-tiedostojen haku</li>
+		<li>Ravintoloiden listaus</li>
+		<li>Tietokannat</li>
+		<li>Vähemmän haastavat ohjelmointi osiot</li>		
+		</ul>	
+		
+		<h3>4.4 Aaro Lyytinen</h3>
+		<ul>
+		<li>Sivun ulkoasun suunnittelu ja toteuttaminen</li>
+		<li>Autentikointi</li>
+		<li>Rekisteröinti</li>
+		<li>Tietokannat</li>
+		<li>Vähemmän haastavat ohjelmointi osiot</li>
+		</ul>	
+		
+		<h3>4.5 Haasteet</h3>
+		<p>Yksi yllättävä haaste oli lounasravintoloiden ruokalistojen löytäminen, sillä ravintolat harvemmin tarjoaa omia ruokalistojaan 
+		julkisesti json tai rss formaatissa. Ruokalistojen lataaminen palvelimelle, koska xml-http-requestia ei voi käyttää ulkopuolisessa domainissa. Tämän takia Yahoon API:a kokeiltiin käyttää JSON-tiedostojen hakemisessa. Viikonpäiväpalkki ja erityisesti kuukausien vaihtuminen oli työlästä saada toimimaan oikein. </p>
+		
+		
+		<h2>5 Itsearviointi</h2>
+		<h3>5.1 Aaro</h3>
+		<p>Harjoitustyö 5/5<br> Php kurssiarvosana 4 <br>Javascript kurssiarvosana 3</p>
+		
+		<h3>5.2 Niki</h3>
+		<p>
+		<a href="/~K8131/ttms0500/TTMS0500oppimispaivakirja.html">Oppimispäiväkirja</a><br>
+		Javascript 3<br> PHP 4</p>
+		
+		<h3>5.3 Veeti</h3>
+		<p>
+			<a href="oppimispaivakirja_veeti.html">Oppimispäiväkirja</a><br>
+			Omasta mielestäni olen osallistunut harjoitustyön tekoon hyvin.<br> Php kurssin arvosana 5 ja javascript kurssiarvosana 4.  
+		</p>
+		
+	</body>
+</html>

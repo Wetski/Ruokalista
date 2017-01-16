@@ -1,0 +1,173 @@
+
+body{	
+    width: 80%;
+    text-align: center;
+	margin: auto;
+    background-image:url(../img/noise.png);
+	font-family: 'Source Sans Pro', sans-serif;
+}
+div.lounas{
+	display: inline-block;
+	color: green;		
+	text-align:center;
+}
+.header-image {
+	align-items: center;	
+	}
+.ruokaRow td{
+	padding-top:15px;
+	width: auto;
+	font-size:14px;
+}
+.infoRow td{
+	padding:0;
+	padding-bottom: 10px;
+	margin: 0;
+	width: auto;
+	font-size:14px;
+}
+.otsikko{
+	color:#165553;
+	font-weight: bold;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.hinta{
+	color:#d89333;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-weight:bold;
+}
+.ruoka{
+	color: #165553;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+ul.lista{    
+	text-align:center;
+	margin-top: 10px;	
+    font-size: 15;
+}
+li.vkp{
+	display:inline-block;
+	float: none;
+    color: #cad971;   
+}
+li.welcome{	
+	color:#165553;
+	font-weight: bold;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	display: block; float: left; position: relative; right: 100%;
+}
+li.active{
+	font-weight: bolder;  
+    color: #cad971;
+}
+h1{
+    color: #737171;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.lista a
+{
+	background-color:#d89333;
+	color:white;	
+}
+.lista a:hover
+{
+	text-decoration:none;
+	color:black;
+}
+.fa
+{
+	letter-spacing:5px;
+}
+.navbar-nav {    
+    text-align: center;
+    
+}
+.navbar li {
+      float: none;
+      display: inline-block;
+}
+.navbar-custom {
+	float: right;
+    color:#ffffff;
+    border-radius:0;    
+}
+@mixin normalize-input {
+  display: block;
+  width: auto;
+  height: auto;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: none;
+  border-radius: 0px;
+}
+.login {
+  padding: 15px;
+  width: 400px;
+  min-height: 400px;
+  margin: 2% auto 0 auto;
+}
+footer {
+	border-top: 1px solid #ddd;
+}
+div table {
+	margin-top: 15px;
+	margin-bottom:15px;
+}
+.rating {
+    float:left;
+}
+
+.rating:not(:checked) > input {
+clip: rect(0px, 0px, 0px, 0px);
+height: 1px;
+margin: -1px;
+overflow: hidden;
+padding: 0;
+position: absolute;
+width: 1px;
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:200%;
+    line-height:1.2;
+    color:#ddd;
+    text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:before {
+    content: "\2605";
+}
+
+.rating > input:checked ~ label {
+    color: #d89333;
+    text-shadow:1px 1px #c60, 2px 2px #d89333, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: #d89333;
+    text-shadow:1px 1px goldenrod, 2px 2px #d89333, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+    text-shadow:1px 1px goldenrod, 2px 2px #d89333, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+

@@ -1,0 +1,69 @@
+{
+  "RestaurantName": "Aimo",
+  "RestaurantUrl": "http://www.amica.fi/ravintolat/ravintolat-kaupungeittain/jyvaskyla/aimo/",
+  "PriceHeader": null,
+  "Footer": "Tarkistathan tuoteseloste merkinnät linjastosta!",
+  "MenusForDays": [
+    {
+      "Date": "2017-01-20T00:00:00",
+      "LunchTime": "10.30-14.30",
+      "SetMenus": [
+        {
+          "SortOrder": 0,
+          "Name": "KASVISLOUNAS",
+          "Price": "8,20€/2,60€",
+          "Components": [
+            "Smetanaista kaalivuokaa (A ,G ,L ,VS)"
+          ]
+        },
+        {
+          "SortOrder": 0,
+          "Name": "LOUNAS III",
+          "Price": "8,20€/2,60€",
+          "Components": [
+            "Pekoni-tomaattikuorrutettu jauhelihapihvi (A ,L ,M ,VS)",
+            "Keitettyjä perunoita (* ,G ,L ,M ,Veg)"
+          ]
+        },
+        {
+          "SortOrder": 0,
+          "Name": "FRESH BUFFET",
+          "Price": "17,30€/kg",
+          "Components": [
+            "Leipäjuustoa (A ,G ,L)",
+            "Salamiviipaleita (G ,L ,M)"
+          ]
+        },
+        {
+          "SortOrder": 0,
+          "Name": "LOUNAS III",
+          "Price": "9,10€/4,90€",
+          "Components": [
+            "Wieninleike (A ,L ,M)",
+            "Höyrytettyä kukkakaalia (A ,G ,VL)",
+            "Perunasosetta (* ,A ,G ,L)"
+          ]
+        },
+        {
+          "SortOrder": 0,
+          "Name": "JÄLKIRUOKA",
+          "Price": "1,60€",
+          "Components": [
+            "Kerroskiisseliä (A ,G)"
+          ]
+        }
+      ]
+    },
+    {
+      "Date": "2017-01-21T00:00:00",
+      "LunchTime": null,
+      "SetMenus": []
+    },
+    {
+      "Date": "2017-01-22T00:00:00",
+      "LunchTime": null,
+      "SetMenus": []
+    }
+  ],
+  "ErrorText": null
+}
